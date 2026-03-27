@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { assets, menuLinks } from '../assets/assets'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 const Navbar = () => {
 
@@ -12,7 +12,7 @@ const Navbar = () => {
         <div className={`flex items-center justify-between px-6 md:px-6 md:px-16 lg:px-24
         xl:px-32 py-4 text-gray-600 border-b border-borderColor relative transition-all
          ${location.pathname === "/" && "bg-light"}`}>
-            
+
             <Link to="/">
                 <img src={assets.logo} alt="logo" className="h-8"/>
             </Link>
