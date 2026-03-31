@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { assets, cityList } from '../assets/assets'
+import { assets } from '../assets/assets'
 
 const Hero = () => {
     const [pickupLocation, setPickupLocation] = useState('')
@@ -16,6 +16,18 @@ const Hero = () => {
                         </p>
                     </div>
 
+                    <div className='flex flex-col items-start gap-2'>
+                        <label htmlFor='pickup-location'>Pick-up Location</label>
+                        <input
+                            type='text'
+                            id='pickup-location'
+                            value={pickupLocation}
+                            onChange={(e) => setPickupLocation(e.target.value)}
+                            placeholder='Enter a location'
+                            className='text-sm text-gray-500 border border-gray-300 rounded px-2 py-1'
+                            required
+                        />
+                    </div>
                     <div className='flex flex-col items-start gap-2'>
                         <label htmlFor='pickup-date'>Pick-up Date</label>
                         <input
