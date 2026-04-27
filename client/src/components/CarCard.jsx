@@ -4,7 +4,9 @@ import { useNavigate } from 'react-router-dom'
 
 const CarCard = ({ car }) => {
 
-    const currency = import.meta.env.VITE_CURRENCY 
+    const currency = '₹'
+    const formatINR = (amount) =>
+        Number(amount).toLocaleString('en-IN', { maximumFractionDigits: 0 })
 const navigate = useNavigate()
     return (
         <div  onClick={()=> {navigate(`/car-details/${car._id}`); scrollTo(0,0)}} className='group rounded-xl overflow-hidden shadow-lg hover:-translate-y-1
@@ -19,7 +21,7 @@ const navigate = useNavigate()
 
                 <div className='absolute bottom-4 right-4 bg-black/80 backdrop-blur-sm
         text-white px-3 py-2 rounded-lg'>
-                    <span className='font-semibold'>{currency}{car.pricePerDay}</span>
+                    <span className='font-semibold'>{currency}{formatINR(car.pricePerDay)}</span>
                     <span className='text-sm text-white/80'> / day</span>
                 </div>
             </div>

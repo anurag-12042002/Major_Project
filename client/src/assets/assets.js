@@ -36,12 +36,12 @@ import main_car from "./main_car.png"
 import banner_car_image from "./banner_car_image.png"
 import user_profile from "./user_profile.png"
 import upload_icon from "./upload_icon.svg"
-import car_image1 from "./car_image1.png"
-import car_image2 from "./car_image2.png"
-import car_image3 from "./car_image3.png"
-import car_image4 from "./car_image4.png"
+import mahindra_xuv700 from "./mahindra_xuv700.png"
+import maruti_swift from "./maruti_swift.png"
+import tata_nexon from "./tata_nexon.png"
+import hyundai_creta from "./hyundai_creta.png"
 
-export const cityList = ['New York', 'Los Angeles', 'Houston', 'Chicago']
+export const cityList = ['Mumbai', 'Delhi', 'Bangalore', 'Chennai']
 
 export const assets = {
     logo,
@@ -80,12 +80,12 @@ export const assets = {
     testimonial_image_2,
     main_car,
     banner_car_image,
-    car_image1,
+    mahindra_xuv700,
+    maruti_swift,
+    tata_nexon,
+    hyundai_creta,
     upload_icon,
     user_profile,
-    car_image2,
-    car_image3,
-    car_image4
 }
 
 export const menuLinks = [
@@ -113,68 +113,68 @@ export const dummyCarData = [
     {
         "_id": "67ff5bc069c03d4e45f30b77",
         "owner": "67fe3467ed8a8fe17d0ba6e2",
-        "brand": "BMW",
-        "model": "X5",
-        "image": car_image1,
-        "year": 2006,
+        "brand": "Mahindra",
+        "model": "XUV700",
+        "image": mahindra_xuv700,
+        "year": 2023,
         "category": "SUV",
-        "seating_capacity": 4,
-        "fuel_type": "Hybrid",
-        "transmission": "Semi-Automatic",
-        "pricePerDay": 300,
-        "location": "New York",
-        "description": "The BMW X5 is a mid-size luxury SUV produced by BMW. The X5 made its debut in 1999 as the first SUV ever produced by BMW.",
+        "seating_capacity": 7,
+        "fuel_type": "Diesel",
+        "transmission": "Automatic",
+        "pricePerDay": 2500,
+        "location": "Mumbai",
+        "description": "The Mahindra XUV700 is India's feature-loaded premium SUV, with ADAS technology, panoramic sunroof, and powerful diesel engine — ideal for both city drives and long road trips.",
         "isAvaliable": true,
         "createdAt": "2025-04-16T07:26:56.215Z",
     },
     {
         "_id": "67ff6b758f1b3684286a2a65",
         "owner": "67fe3467ed8a8fe17d0ba6e2",
-        "brand": "Toyota",
-        "model": "Corolla",
-        "image": car_image2,
-        "year": 2021,
-        "category": "Sedan",
-        "seating_capacity": 4,
-        "fuel_type": "Diesel",
+        "brand": "Maruti Suzuki",
+        "model": "Swift",
+        "image": maruti_swift,
+        "year": 2024,
+        "category": "Hatchback",
+        "seating_capacity": 5,
+        "fuel_type": "Petrol",
         "transmission": "Manual",
-        "pricePerDay": 130,
-        "location": "Chicago",
-        "description": "The Toyota Corolla is a mid-size luxury sedan produced by Toyota. The Corolla made its debut in 2008 as the first sedan ever produced by Toyota.",
+        "pricePerDay": 799,
+        "location": "Delhi",
+        "description": "The Maruti Suzuki Swift is India's best-selling hatchback. Zippy, fuel-efficient, and easy to park in Delhi's busy lanes — the perfect city car for everyday use.",
         "isAvaliable": true,
         "createdAt": "2025-04-16T08:33:57.993Z",
     },
     {
         "_id": "67ff6b9f8f1b3684286a2a68",
         "owner": "67fe3467ed8a8fe17d0ba6e2",
-        "brand": "Jeep ",
-        "model": "Wrangler",
-        "image": car_image3,
-        "year": 2023,
+        "brand": "Tata",
+        "model": "Nexon",
+        "image": tata_nexon,
+        "year": 2024,
         "category": "SUV",
-        "seating_capacity": 4,
-        "fuel_type": "Hybrid",
+        "seating_capacity": 5,
+        "fuel_type": "Electric",
         "transmission": "Automatic",
-        "pricePerDay": 200,
-        "location": "Los Angeles",
-        "description": "The Jeep Wrangler is a mid-size luxury SUV produced by Jeep. The Wrangler made its debut in 2003 as the first SUV ever produced by Jeep.",
+        "pricePerDay": 1800,
+        "location": "Bangalore",
+        "description": "The Tata Nexon EV is India's top-selling electric SUV. With a 465 km range and fast charging support, it's perfect for eco-friendly drives around Bangalore's tech corridors.",
         "isAvaliable": true,
         "createdAt": "2025-04-16T08:34:39.592Z",
     },
     {
         "_id": "68009c93a3f5fc6338ea7e34",
         "owner": "67fe3467ed8a8fe17d0ba6e2",
-        "brand": "Ford",
-        "model": "Neo 6",
-        "image": car_image4,
-        "year": 2022,
-        "category": "Sedan",
-        "seating_capacity": 2,
-        "fuel_type": "Diesel",
+        "brand": "Hyundai",
+        "model": "Creta",
+        "image": hyundai_creta,
+        "year": 2024,
+        "category": "SUV",
+        "seating_capacity": 5,
+        "fuel_type": "Petrol",
         "transmission": "Semi-Automatic",
-        "pricePerDay": 209,
-        "location": "Houston",
-        "description": "This is a mid-size luxury sedan produced by Toyota. The Corolla made its debut in 2008 as the first sedan ever produced by Toyota.",
+        "pricePerDay": 1200,
+        "location": "Chennai",
+        "description": "The Hyundai Creta is one of India's most popular compact SUVs, offering a perfect blend of style, comfort, and performance for navigating Chennai's city roads and coastal highways.",
         "isAvaliable": true,
         "createdAt": "2025-04-17T06:15:47.318Z",
     }
@@ -189,7 +189,7 @@ export const dummyMyBookingsData = [
         "pickupDate": "2025-06-13T00:00:00.000Z",
         "returnDate": "2025-06-14T00:00:00.000Z",
         "status": "confirmed",
-        "price": 440,
+        "price": 5000,
         "createdAt": "2025-06-10T12:57:48.244Z",
     },
     {
@@ -200,7 +200,7 @@ export const dummyMyBookingsData = [
         "pickupDate": "2025-06-12T00:00:00.000Z",
         "returnDate": "2025-06-12T00:00:00.000Z",
         "status": "pending",
-        "price": 130,
+        "price": 799,
         "createdAt": "2025-06-10T12:57:25.613Z",
     },
     {
@@ -211,7 +211,7 @@ export const dummyMyBookingsData = [
         "pickupDate": "2025-06-11T00:00:00.000Z",
         "returnDate": "2025-06-12T00:00:00.000Z",
         "status": "pending",
-        "price": 600,
+        "price": 3600,
         "createdAt": "2025-06-10T09:55:06.379Z",
     },
     {
@@ -222,7 +222,7 @@ export const dummyMyBookingsData = [
         "pickupDate": "2025-06-11T00:00:00.000Z",
         "returnDate": "2025-06-12T00:00:00.000Z",
         "status": "confirmed",
-        "price": 440,
+        "price": 2400,
         "createdAt": "2025-06-10T09:44:25.410Z",
     }
 ]
@@ -236,5 +236,5 @@ export const dummyDashboardData = {
         dummyMyBookingsData[0],
         dummyMyBookingsData[1]
     ],
-    "monthlyRevenue": 840
+    "monthlyRevenue": 41993
 }

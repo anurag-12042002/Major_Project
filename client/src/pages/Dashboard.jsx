@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { dummyCarData, dummyMyBookingsData } from '../assets/assets'
 
 const Dashboard = () => {
     const navigate = useNavigate()
@@ -86,7 +87,7 @@ const Dashboard = () => {
                         <div className='grid grid-cols-1 md:grid-cols-4 gap-4'>
                             <div className='bg-white rounded-lg p-6 shadow-md border-l-4 border-primary'>
                                 <div className='text-gray-600 text-sm font-semibold'>Total Earnings</div>
-                                <div className='text-3xl font-bold text-gray-900 mt-2'>$12,450</div>
+                                <div className='text-3xl font-bold text-gray-900 mt-2'>₹10,23,500</div>
                                 <div className='text-green-600 text-sm mt-2'>↑ 12.5% this month</div>
                             </div>
                             <div className='bg-white rounded-lg p-6 shadow-md border-l-4 border-blue-500'>
@@ -110,20 +111,20 @@ const Dashboard = () => {
                             <div className='bg-white rounded-lg p-6 shadow-md'>
                                 <h3 className='text-xl font-bold text-gray-900 mb-4'>Recent Bookings</h3>
                                 <div className='space-y-3'>
-                                    <div className='flex justify-between items-center p-3 bg-gray-50 rounded-lg'>
-                                        <div>
-                                            <div className='font-semibold text-gray-900'>Toyota Camry</div>
-                                            <div className='text-sm text-gray-600'>Apr 10 - Apr 12</div>
+                                    {dummyMyBookingsData.slice(0, 2).map((booking, i) => (
+                                        <div key={booking._id} className='flex justify-between items-center p-3 bg-gray-50 rounded-lg'>
+                                            <div>
+                                                <div className='font-semibold text-gray-900'>{booking.car.brand} {booking.car.model}</div>
+                                                <div className='text-sm text-gray-600'>
+                                                    {new Date(booking.pickupDate).toLocaleDateString('en-IN', { day: '2-digit', month: 'short' })} –{' '}
+                                                    {new Date(booking.returnDate).toLocaleDateString('en-IN', { day: '2-digit', month: 'short' })}
+                                                </div>
+                                            </div>
+                                            <span className={`px-3 py-1 rounded-full text-xs font-semibold capitalize ${
+                                                booking.status === 'confirmed' ? 'bg-green-100 text-green-700' : 'bg-blue-100 text-blue-700'
+                                            }`}>{booking.status}</span>
                                         </div>
-                                        <span className='px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-semibold'>Completed</span>
-                                    </div>
-                                    <div className='flex justify-between items-center p-3 bg-gray-50 rounded-lg'>
-                                        <div>
-                                            <div className='font-semibold text-gray-900'>BMW X5</div>
-                                            <div className='text-sm text-gray-600'>Apr 15 - Apr 17</div>
-                                        </div>
-                                        <span className='px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-semibold'>Pending</span>
-                                    </div>
+                                    ))}
                                 </div>
                             </div>
 
@@ -145,21 +146,64 @@ const Dashboard = () => {
                                 + Add New Vehicle
                             </button>
                         </div>
-                        <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-                            {[1, 2, 3, 4].map((i) => (
-                                <div key={i} className='bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow'>
-                                    <div className='h-48 bg-gradient-to-r from-blue-400 to-blue-600 flex items-center justify-center text-white'>
-                                        [Vehicle Image]
+                        <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+                            {dummyCarData.map((car) => (
+                                <div key={car._id} className='bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300'>
+                                    {/* Car Image */}
+                                    <div className='h-48 bg-gray-50 flex items-center justify-center p-4 border-b border-borderColor'>
+                                        <img
+                                            src={car.image}
+                                            alt={`${car.brand} ${car.model}`}
+                                            className='h-full w-full object-contain transition-transform duration-300 hover:scale-105'
+                                        />
                                     </div>
-                                    <div className='p-4'>
-                                        <h3 className='text-lg font-bold text-gray-900'>Vehicle {i}</h3>
-                                        <p className='text-sm text-gray-600 mt-1'>Make: BMW X{4 + i}</p>
-                                        <p className='text-sm text-gray-600'>Status: Active</p>
-                                        <div className='flex gap-2 mt-4'>
-                                            <button className='flex-1 px-3 py-2 bg-primary hover:bg-primary-dull transition-all text-white rounded text-sm font-semibold'>
+
+                                    {/* Car Details */}
+                                    <div className='p-5'>
+                                        <div className='flex items-start justify-between mb-3'>
+                                            <div>
+                                                <h3 className='text-lg font-bold text-gray-900'>{car.brand} {car.model}</h3>
+                                                <p className='text-sm text-gray-500'>{car.category} • {car.year}</p>
+                                            </div>
+                                            <span className={`px-3 py-1 rounded-full text-xs font-semibold ${car.isAvaliable ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-600'}`}>
+                                                {car.isAvaliable ? 'Available' : 'Rented'}
+                                            </span>
+                                        </div>
+
+                                        {/* Specs Row */}
+                                        <div className='grid grid-cols-3 gap-2 mb-4 text-sm text-gray-600'>
+                                            <div className='flex flex-col items-center bg-gray-50 rounded-lg py-2'>
+                                                <span className='text-xs text-gray-400 mb-0.5'>Fuel</span>
+                                                <span className='font-medium'>{car.fuel_type}</span>
+                                            </div>
+                                            <div className='flex flex-col items-center bg-gray-50 rounded-lg py-2'>
+                                                <span className='text-xs text-gray-400 mb-0.5'>Seats</span>
+                                                <span className='font-medium'>{car.seating_capacity}</span>
+                                            </div>
+                                            <div className='flex flex-col items-center bg-gray-50 rounded-lg py-2'>
+                                                <span className='text-xs text-gray-400 mb-0.5'>Gear</span>
+                                                <span className='font-medium text-center text-xs'>{car.transmission}</span>
+                                            </div>
+                                        </div>
+
+                                        {/* Location & Price */}
+                                        <div className='flex items-center justify-between mb-4'>
+                                            <span className='text-sm text-gray-500'>📍 {car.location}</span>
+                                            <span className='text-lg font-bold text-primary'>
+                                                ₹{Number(car.pricePerDay).toLocaleString('en-IN')}
+                                                <span className='text-xs font-normal text-gray-400'>/day</span>
+                                            </span>
+                                        </div>
+
+                                        {/* Action Buttons */}
+                                        <div className='flex gap-3'>
+                                            <button className='flex-1 px-3 py-2 bg-primary hover:bg-primary-dull transition-all text-white rounded-lg text-sm font-semibold'>
                                                 Edit
                                             </button>
-                                            <button className='flex-1 px-3 py-2 bg-gray-200 hover:bg-gray-300 transition-all text-gray-900 rounded text-sm font-semibold'>
+                                            <button
+                                                onClick={() => navigate(`/car-details/${car._id}`)}
+                                                className='flex-1 px-3 py-2 bg-gray-100 hover:bg-gray-200 transition-all text-gray-800 rounded-lg text-sm font-semibold'
+                                            >
                                                 View
                                             </button>
                                         </div>
@@ -185,13 +229,20 @@ const Dashboard = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {[1, 2, 3].map((i) => (
+                                    {[
+                                        { car: 'Mahindra XUV700', guest: 'Rajesh Kumar',    dates: 'Jun 13 – Jun 14', status: 'confirmed', color: 'green' },
+                                        { car: 'Maruti Suzuki Swift', guest: 'Priya Sharma', dates: 'Jun 12 – Jun 12', status: 'pending',   color: 'yellow' },
+                                        { car: 'Tata Nexon EV',     guest: 'Amit Verma',    dates: 'Jun 11 – Jun 12', status: 'pending',   color: 'yellow' },
+                                        { car: 'Hyundai Creta',     guest: 'Sneha Patel',   dates: 'Jun 11 – Jun 12', status: 'confirmed', color: 'green' },
+                                    ].map((row, i) => (
                                         <tr key={i} className='border-b border-borderColor hover:bg-gray-50'>
-                                            <td className='px-6 py-4 text-sm text-gray-900'>Toyota Camry</td>
-                                            <td className='px-6 py-4 text-sm text-gray-600'>John Doe</td>
-                                            <td className='px-6 py-4 text-sm text-gray-600'>Apr {10 + i} - Apr {12 + i}</td>
+                                            <td className='px-6 py-4 text-sm font-medium text-gray-900'>{row.car}</td>
+                                            <td className='px-6 py-4 text-sm text-gray-600'>{row.guest}</td>
+                                            <td className='px-6 py-4 text-sm text-gray-600'>{row.dates}</td>
                                             <td className='px-6 py-4'>
-                                                <span className='px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-semibold'>Completed</span>
+                                                <span className={`px-3 py-1 rounded-full text-xs font-semibold capitalize ${
+                                                    row.color === 'green' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'
+                                                }`}>{row.status}</span>
                                             </td>
                                             <td className='px-6 py-4'>
                                                 <button className='text-primary hover:text-primary-dull font-semibold text-sm'>View Details</button>
@@ -210,15 +261,15 @@ const Dashboard = () => {
                         <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
                             <div className='bg-white rounded-lg p-6 shadow-md'>
                                 <div className='text-gray-600 text-sm font-semibold'>This Month</div>
-                                <div className='text-3xl font-bold text-gray-900 mt-2'>$3,450</div>
+                                <div className='text-3xl font-bold text-gray-900 mt-2'>₹2,84,500</div>
                             </div>
                             <div className='bg-white rounded-lg p-6 shadow-md'>
                                 <div className='text-gray-600 text-sm font-semibold'>This Year</div>
-                                <div className='text-3xl font-bold text-gray-900 mt-2'>$12,450</div>
+                                <div className='text-3xl font-bold text-gray-900 mt-2'>₹10,23,500</div>
                             </div>
                             <div className='bg-white rounded-lg p-6 shadow-md'>
                                 <div className='text-gray-600 text-sm font-semibold'>Pending Payout</div>
-                                <div className='text-3xl font-bold text-gray-900 mt-2'>$850</div>
+                                <div className='text-3xl font-bold text-gray-900 mt-2'>₹69,900</div>
                             </div>
                         </div>
                         <div className='bg-white rounded-lg p-6 shadow-md'>

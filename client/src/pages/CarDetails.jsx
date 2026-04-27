@@ -6,7 +6,9 @@ const CarDetail = () => {
   const { id } = useParams()
   const navigate = useNavigate()
   const [car, setCar] = useState(null)
-  const currency = import.meta.env.VITE_CURRENCY || '$'
+  const currency = '₹'
+  const formatINR = (amount) =>
+    Number(amount).toLocaleString('en-IN', { maximumFractionDigits: 0 })
 
   useEffect(() => {
     const foundCar = dummyCarData.find((c) => c._id === id)
@@ -45,7 +47,7 @@ const CarDetail = () => {
                 </p>
               </div>
               <div className='text-right'>
-                <p className='text-3xl font-bold text-primary'>{currency}{car.pricePerDay}</p>
+                <p className='text-3xl font-bold text-primary'>{currency}{formatINR(car.pricePerDay)}</p>
                 <p className='text-gray-500 text-sm'>/ day</p>
               </div>
             </div>

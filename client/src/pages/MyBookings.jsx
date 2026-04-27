@@ -2,7 +2,10 @@ import React from 'react'
 import { dummyMyBookingsData, assets } from '../assets/assets'
 
 const MyBookings = () => {
-  const currency = import.meta.env.VITE_CURRENCY || '$'
+  const currency = '₹'
+
+  const formatINR = (amount) =>
+    Number(amount).toLocaleString('en-IN', { maximumFractionDigits: 0 })
 
   const formatDate = (dateString) => {
     const options = { year: 'numeric', month: 'short', day: 'numeric' }
@@ -47,7 +50,7 @@ const MyBookings = () => {
               
               <div className='bg-gray-50 rounded-lg p-3 inline-block'>
                 <p className='text-sm font-medium'>
-                  Total Price: <span className='text-primary text-lg ml-1'>{currency}{booking.price}</span>
+                  Total Price: <span className='text-primary text-lg ml-1'>{currency}{formatINR(booking.price)}</span>
                 </p>
               </div>
             </div>

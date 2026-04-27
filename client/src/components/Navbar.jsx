@@ -15,7 +15,7 @@ const Navbar = () => {
          ${location.pathname === "/" && "bg-light"}`}>
 
             <Link to="/">
-                <img src={assets.logo} alt="logo" className="h-8" />
+                <img src={assets.logo} alt="logo" className="h-9 w-auto max-w-[140px] object-contain" />
             </Link>
 
             <div className={`max-sm:fixed max=sm:h-screen max=sm:w-full max-sm:top-16
